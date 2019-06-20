@@ -12,16 +12,11 @@ import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 // import { ConnectedRouter } from 'connected-react-router';
 // import history from 'utils/history';
 // import 'sanitize.css/sanitize.css';
-
-//import my reducers
-import reducers from 'reducers';
 
 // Import root app
 import App from 'containers/App';
@@ -35,18 +30,14 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
-//import configureStore from './configureStore';
+import configureStore from './configureStore';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
 
 // Create redux store with history
 //const initialState = {};
-//const store = configureStore(initialState, history);
-
-//Creating my own store without using saga
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+const store = configureStore();
 
 // specifying which DOM element to load everything in
 const MOUNT_NODE = document.getElementById('app');

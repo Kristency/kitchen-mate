@@ -9,6 +9,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import recipeListReducer from './recipeListReducer';
 import recipeDetailsReducer from './recipeDetailsReducer';
 import currentlySelectedRecipeReducer from './currentlySelectedRecipeReducer';
+import errorReducer from './errorReducer';
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -18,5 +19,6 @@ export default combineReducers({
 	recipeList: recipeListReducer,
 	recipeDetails: recipeDetailsReducer,
 	currentlySelectedRecipe: currentlySelectedRecipeReducer,
-	form: formReducer
+	form: formReducer,
+	error: errorReducer
 });

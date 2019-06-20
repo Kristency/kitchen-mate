@@ -11,7 +11,7 @@ import {
 	withStyles
 } from '@material-ui/core';
 
-import { currentlySelectedRecipe } from 'actions';
+import { setCurrentlySelectedRecipe } from 'actions';
 
 const styles = (theme) => {
 	return {
@@ -31,7 +31,7 @@ class LeftPane extends Component {
 
 	onSelect = (recipeId, index) => {
 		this.setState({ selectedIndex: index });
-		this.props.currentlySelectedRecipe(recipeId);
+		this.props.setCurrentlySelectedRecipe(recipeId);
 	};
 
 	renderRecipesList() {
@@ -95,4 +95,4 @@ const mapStateToProps = (state) => {
 
 const stylesWrappedLeftPane = withStyles(styles)(LeftPane);
 
-export default connect(mapStateToProps, { currentlySelectedRecipe })(stylesWrappedLeftPane);
+export default connect(mapStateToProps, { setCurrentlySelectedRecipe })(stylesWrappedLeftPane);

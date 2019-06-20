@@ -3,7 +3,7 @@ import { TextField, withStyles, withWidth } from '@material-ui/core';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import { fetchRecipeList } from 'actions';
+import { loadRecipeList } from 'actions';
 
 const styles = (theme) => {
 	return {
@@ -38,13 +38,17 @@ class SearchBar extends Component {
 	};
 
 	onFormSubmit = (formValues) => {
-		this.props.fetchRecipeList(formValues.searchTerm);
+		this.props.loadRecipeList(formValues.searchTerm);
 	};
 
 	render() {
 		return (
 			<form onSubmit={this.props.handleSubmit(this.onFormSubmit)}>
-				<Field name="searchTerm" component={this.renderInput} label={(this.props.width==='xs')?"Search Recipe":"What do you wanna make today..."} />
+				<Field
+					name="searchTerm"
+					component={this.renderInput}
+					label={this.props.width === 'xs' ? 'Search Recipe' : 'What do you wanna make today...'}
+				/>
 			</form>
 		);
 	}
@@ -56,4 +60,4 @@ const formWrapped = reduxForm({
 
 const styleWrapped = withWidth()(withStyles(styles)(formWrapped));
 
-export default connect(null, { fetchRecipeList })(styleWrapped);
+export default connect(null, { loadRecipeList })(styleWrapped);
